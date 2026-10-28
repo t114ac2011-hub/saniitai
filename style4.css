@@ -1,0 +1,561 @@
+/* =========================
+   基本設定
+   ========================= */
+
+:root {
+  --page-background: #31404a;
+  --cream: #eae1cc;
+  --price-color: #75364e;
+  --footer-title-color: #892a3f;
+  --control-background: #455e6d;
+
+  /*
+   * 原字型若未安裝，會使用替代字型。
+   * 若要加入 @font-face，請先確認網頁使用授權。
+   */
+  --heading-font:
+    "DFShiYi W7",
+    "Noto Serif TC",
+    "PMingLiU",
+    serif;
+
+  --product-font:
+    "DFShiYiW5-B5",
+    "Noto Serif TC",
+    "PMingLiU",
+    serif;
+
+  --body-font:
+    "Noto Sans",
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--page-background);
+  color: #000;
+  font-family: var(--body-font);
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  margin: 0;
+}
+
+button:disabled {
+  opacity: 1;
+}
+
+/* =========================
+   電腦滿版、等比例縮放
+   ========================= */
+
+.viewport {
+  width: 100%;
+  container-type: inline-size;
+  overflow: hidden;
+  background: var(--page-background);
+}
+
+.page {
+  --u: calc(100vw / 1440);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+
+  /*
+   * 設計畫面為 1440 × 2560，
+   * 但目前頁尾底圖延伸至 2665：
+   * 2010 + 655。
+   *
+   * 保留完整高度，避免頁尾被截掉。
+   */
+  height: calc(2560 * var(--u));
+  background: var(--page-background);
+}
+
+@supports (width: 1cqw) {
+  .page {
+    --u: calc(100cqw / 1440);
+  }
+}
+
+/* 相對父層的設計座標與尺寸 */
+.box {
+  position: absolute;
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+}
+
+/* =========================
+   圖片填滿
+   ========================= */
+
+.image-fill {
+  overflow: hidden;
+}
+
+.image-fill > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================
+   圖片自訂裁切
+   ========================= */
+
+/*
+ * 適用於沒有旋轉或傾斜的裁切圖片。
+ *
+ * --sx、--sy：顯示範圍占原圖的比例
+ * --tx、--ty：原圖取景起點
+ */
+.image-crop {
+  overflow: hidden;
+}
+
+.image-crop > img {
+  position: absolute;
+  display: block;
+
+  width: calc(100% / var(--sx));
+  height: calc(100% / var(--sy));
+
+  left: calc(-100% * var(--tx) / var(--sx));
+  top: calc(-100% * var(--ty) / var(--sy));
+
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+}
+
+/* =========================
+   目前圖片裁切參數
+   ========================= */
+
+/* 購物車木製外框 */
+.crop-frame {
+  --sx: 0.444356680;
+  --sy: 0.638065934;
+  --tx: 0.030560078;
+  --ty: 0.224504486;
+}
+
+/* 商品圖片後方底板 */
+.crop-plate {
+  --sx: 0.211990729;
+  --sy: 0.440995932;
+  --tx: 0.070206553;
+  --ty: 0.304456681;
+}
+
+/* 米粒圖片 */
+.crop-rice {
+  --sx: 0.714100897;
+  --sy: 0.608020723;
+  --tx: 0.143724054;
+  --ty: 0.136875674;
+}
+
+/* 婕哥不藥 */
+.crop-jie {
+  --sx: 1.000026822;
+  --sy: 0.851472259;
+  --tx: 0;
+  --ty: -0.001418702;
+}
+
+/* 手寫簽名圖片 */
+.crop-signature {
+  --sx: 1.011453390;
+  --sy: 0.861201346;
+  --tx: -0.005195243;
+  --ty: 0.094964661;
+}
+
+/* 結帳按鈕 */
+.crop-checkout {
+  --sx: 1;
+  --sy: 0.236947790;
+  --tx: 0;
+  --ty: 0.450439841;
+}
+
+/* 頁尾背景 */
+.crop-footer {
+  --sx: 1;
+  --sy: 0.951680720;
+  --tx: 0;
+  --ty: -0.022321431;
+}
+
+/*
+ * 第四筆 Q 毛圖片含旋轉，
+ * 不使用上方只適用於直向裁切的公式。
+ *
+ * 以下矩陣包含目前的縮放、旋轉與位移，
+ * 對應 276 × 235 的顯示範圍。
+ *
+ * 整頁等比例縮放時，這個比例不變。
+ */
+.crop-hair > img {
+  width: 100%;
+  height: 100%;
+
+  left: 53.624391309%;
+  top: -56.491471213%;
+
+  object-fit: fill;
+  transform-origin: 0 0;
+
+  transform: matrix(
+    0.952173353,
+    1.026830336,
+    -1.205979472,
+    1.118297148,
+    0,
+    0
+  );
+}
+
+/* =========================
+   導覽列
+   ========================= */
+
+.site-header {
+  overflow: visible;
+}
+
+.header-background {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.header-background img {
+  /*
+   * 原設計曝光值為 -0.22。
+   * 此處以 brightness 近似，
+   * 不代表與 Figma 曝光演算法完全一致。
+   */
+  filter: brightness(0.859);
+}
+
+.header-link {
+  z-index: 5;
+}
+
+.header-text {
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: calc(48 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* 三條線選單圖示 */
+.hamburger {
+  display: block;
+}
+
+.hamburger span {
+  position: absolute;
+  left: calc(4 * var(--u));
+
+  width: calc(40 * var(--u));
+  height: calc(4 * var(--u));
+
+  border-radius: calc(2 * var(--u));
+  background: var(--cream);
+}
+
+.hamburger span:nth-child(1) {
+  top: calc(8 * var(--u));
+}
+
+.hamburger span:nth-child(2) {
+  top: calc(22 * var(--u));
+}
+
+.hamburger span:nth-child(3) {
+  top: calc(36 * var(--u));
+}
+
+/* =========================
+   購物車標題與畫框
+   ========================= */
+
+.section-title {
+  z-index: 1;
+
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: calc(48 * var(--u));
+  font-weight: 400;
+  line-height: calc(71 * var(--u));
+}
+
+.cart-panel {
+  isolation: isolate;
+  overflow: visible;
+  background: var(--cream);
+}
+
+.cart-frame {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cart-item {
+  z-index: 1;
+  overflow: visible;
+}
+
+.item-plate {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.item-picture {
+  z-index: 1;
+}
+
+.item-name,
+.item-price,
+.quantity-label,
+.quantity-control {
+  z-index: 2;
+}
+
+/* =========================
+   商品名稱與金額
+   ========================= */
+
+.item-name {
+  font-family: var(--product-font);
+  font-size: calc(48 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+  overflow: visible;
+}
+
+.item-price,
+.cart-total {
+  color: var(--price-color);
+  font-family: var(--product-font);
+  font-size: calc(48 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+  overflow: visible;
+}
+
+.cart-total {
+  z-index: 2;
+}
+
+/* =========================
+   數量欄位
+   ========================= */
+
+.quantity-label {
+  font-family: var(--body-font);
+  font-size: calc(20 * var(--u));
+  line-height: calc(28 * var(--u));
+}
+
+.quantity-control {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: calc(6 * var(--u));
+}
+
+.quantity-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 calc(36 * var(--u));
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+
+  margin: 0;
+  padding: 0;
+  appearance: none;
+
+  border: calc(1 * var(--u)) solid var(--cream);
+  background: var(--control-background);
+  color: var(--cream);
+
+  font-family: var(--body-font);
+  font-size: calc(20 * var(--u));
+  line-height: calc(28 * var(--u));
+}
+
+.quantity-button--minus {
+  border-right: 0;
+  border-radius:
+    calc(6 * var(--u))
+    0
+    0
+    calc(6 * var(--u));
+}
+
+.quantity-button--plus {
+  border-left: 0;
+  border-radius:
+    0
+    calc(6 * var(--u))
+    calc(6 * var(--u))
+    0;
+}
+
+.quantity-button:disabled {
+  cursor: default;
+  color: var(--cream);
+  -webkit-text-fill-color: var(--cream);
+}
+
+.quantity-input {
+  flex: 0 0 calc(44 * var(--u));
+  width: calc(44 * var(--u));
+  min-width: 0;
+  height: calc(36 * var(--u));
+
+  margin: 0;
+  padding: 0;
+
+  border: calc(1 * var(--u)) solid var(--cream);
+  border-radius: 0;
+  background: var(--cream);
+  color: var(--page-background);
+
+  font-family: var(--body-font);
+  font-size: calc(20 * var(--u));
+  line-height: calc(28 * var(--u));
+  text-align: center;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* =========================
+   結帳圖片按鈕
+   ========================= */
+
+.checkout-button {
+  z-index: 2;
+  display: block;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.checkout-button:disabled {
+  cursor: default;
+}
+
+/* =========================
+   頁尾
+   ========================= */
+
+.footer {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.footer-background {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer-column {
+  z-index: 1;
+}
+
+.footer-column h2 {
+  height: calc(30 * var(--u));
+  margin-bottom: calc(19 * var(--u));
+
+  color: var(--footer-title-color);
+  font-family: var(--product-font);
+  font-size: calc(32 * var(--u));
+  font-weight: 400;
+  line-height: calc(30 * var(--u));
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column li {
+  min-height: calc(35 * var(--u));
+
+  font-family: var(--body-font);
+  font-size: calc(20 * var(--u));
+  line-height: calc(28 * var(--u));
+}
+
+.footer-column--service li:nth-child(n + 4) {
+  position: relative;
+  top: calc(1 * var(--u));
+}
+
+/* =========================
+   鍵盤操作焦點
+   ========================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: calc(2 * var(--u)) solid var(--price-color);
+  outline-offset: calc(4 * var(--u));
+}

@@ -1,0 +1,190 @@
+/* =========================
+   首頁整體高度
+   ========================= */
+
+.home-page {
+  height: calc(2500 * var(--u));
+}
+
+/* =========================
+   圖片裁切參數
+   ========================= */
+
+/* 品牌吊牌 */
+.crop-sign {
+  --sx: 1;
+  --sy: 0.433280468;
+  --tx: 0;
+  --ty: 0.000069488;
+}
+
+/* 右上方選單拉繩 */
+.crop-rope {
+  --sx: 0.999999940;
+  --sy: 0.805381775;
+  --tx: 0;
+  --ty: 0.194900006;
+}
+
+/* 左側縮小藥的大木製畫框 */
+.crop-frame-large {
+  --sx: 0.444356680;
+  --sy: 0.638065934;
+  --tx: 0.030560078;
+  --ty: 0.224504486;
+}
+
+/* 人生重來藥、爆肝藥的畫框取景 */
+.crop-frame-a {
+  --sx: 0.216362268;
+  --sy: 0.306127280;
+  --tx: 0.718938470;
+  --ty: 0.555875003;
+}
+
+/* 黃金瓦仔的畫框取景 */
+.crop-frame-gold {
+  --sx: 0.225980178;
+  --sy: 0.313964099;
+  --tx: 0.484026313;
+  --ty: 0.217028216;
+}
+
+/* 俐三的血的畫框取景 */
+.crop-frame-blood {
+  --sx: 0.236512825;
+  --sy: 0.313964099;
+  --tx: 0.481578887;
+  --ty: 0.217028216;
+}
+
+/* 大商品圖片後方底板 */
+.crop-plate-large {
+  --sx: 0.211990729;
+  --sy: 0.440995932;
+  --tx: 0.070206553;
+  --ty: 0.304456681;
+}
+
+/* 小商品圖片後方底板 */
+.crop-plate-small {
+  --sx: 0.103438035;
+  --sy: 0.215178028;
+  --tx: 0.508253157;
+  --ty: 0.274052352;
+}
+
+/* 黃金瓦仔商品圖片 */
+.crop-gold {
+  --sx: 0.607521713;
+  --sy: 1.080038548;
+  --tx: 0.196594998;
+  --ty: -0.082790375;
+}
+
+/* 頁尾裝飾背景 */
+.crop-footer {
+  --sx: 1;
+  --sy: 0.951680720;
+  --tx: 0;
+  --ty: -0.022321431;
+}
+
+/* =========================
+   商品卡片與前後順序
+   ========================= */
+
+.product {
+  background: var(--cream);
+}
+
+.product-frame {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.product-plate {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-picture {
+  z-index: 2;
+}
+
+.product-name,
+.product-price,
+.product-description {
+  z-index: 3;
+}
+
+/*
+ * 右側兩張卡片：
+ * 保留目前畫框位於底板上方的順序。
+ */
+.product-plate--under {
+  z-index: 0;
+}
+
+.product-frame--over {
+  z-index: 1;
+}
+
+/* 最新大卡片字級為 28 */
+.product-name--large,
+.product-price--large {
+  font-size: calc(28 * var(--u));
+}
+
+/* =========================
+   頁尾
+   ========================= */
+
+.footer-background {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer-column {
+  z-index: 1;
+}
+
+.footer-title {
+  color: var(--footer-title-color);
+  font-family: var(--product-font);
+  font-size: calc(28 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer-copy {
+  font-family: var(--body-font);
+  font-size: calc(16 * var(--u));
+  line-height: calc(28 * var(--u));
+}
+
+/* =========================
+   可點擊連結（新增）
+   ========================= */
+
+/* 整張商品卡片的透明連結：蓋在卡片最上層 */
+.product-link {
+  z-index: 4;
+  display: block;
+  cursor: pointer;
+}
+
+.product-link:focus-visible {
+  outline: calc(3 * var(--u)) solid var(--cream);
+  outline-offset: calc(-6 * var(--u));
+}
+
+/* 拉繩：滑鼠手勢與微動效果 */
+.crop-rope {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.crop-rope:hover {
+  transform: scale(1.05);
+}

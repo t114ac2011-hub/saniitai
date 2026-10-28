@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>三位一體♡藥理循環</title>
+
+  <meta
+    name="description"
+    content="三位一體♡藥理循環，探索活動優惠與趣味商品。"
+  >
+
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+  <div class="viewport">
+    <div class="page home-page">
+
+      <!-- =====================
+           覆蓋式導覽選單（頁面二）
+           點繩子：從上方下滑蓋在頁面上
+           點選單空白處：上滑收起
+           ===================== -->
+      <div
+        id="curtain-menu"
+        class="menu-overlay"
+        aria-hidden="true"
+      >
+        <div class="menu-page">
+
+          <div
+            class="box menu-background image-fill"
+            style="--x:0; --y:0; --w:1440; --h:1203;"
+            aria-hidden="true"
+          >
+            <img
+              src="images/窗簾.png"
+              alt=""
+              width="1440"
+              height="1000"
+            >
+          </div>
+
+          <div
+            class="box menu-shade"
+            style="--x:0; --y:0; --w:1440; --h:1203;"
+            aria-hidden="true"
+          ></div>
+
+          <nav
+            class="menu-navigation"
+            aria-label="主要導覽"
+          >
+            <!-- 新品：收起選單並捲到優惠商品 -->
+            <a
+              class="box menu-link"
+              style="--x:126; --y:110; --w:523; --h:115;"
+              href="#products"
+            >
+              <span class="menu-label">新品</span>
+            </a>
+
+            <button
+              class="box menu-link menu-placeholder"
+              style="--x:126; --y:225; --w:523; --h:115;"
+              type="button"
+              title="關於我們頁面尚未建立"
+              disabled
+            >
+              <span class="menu-label">關於我們</span>
+            </button>
+
+            <!-- 所有商品：收起選單並捲到優惠商品 -->
+            <a
+              class="box menu-link"
+              style="--x:126; --y:340; --w:523; --h:115;"
+              href="#products"
+            >
+              <span class="menu-label">所有商品</span>
+            </a>
+
+            <!-- 購物車 → 頁面四 -->
+            <a
+              class="box menu-link"
+              style="--x:126; --y:455; --w:523; --h:115;"
+              href="html4.html"
+            >
+              <span class="menu-label">購物車</span>
+            </a>
+
+            <button
+              class="box menu-link menu-placeholder"
+              style="--x:126; --y:570; --w:523; --h:115;"
+              type="button"
+              title="登入功能尚未串接"
+              disabled
+            >
+              <span class="menu-label">登入</span>
+            </button>
+          </nav>
+
+        </div>
+      </div>
+
+      <main>
+        <!-- =====================
+             主視覺
+             ===================== -->
+        <header
+          class="box hero"
+          style="--x:0; --y:0; --w:1440; --h:960;"
+        >
+          <h1 class="sr-only">三位一體♡藥理循環</h1>
+
+          <!-- 圖片：藥鋪人物主視覺原圖 -->
+          <div
+            class="box image-fill"
+            style="--x:0; --y:0; --w:1440; --h:960;"
+          >
+            <img
+              src="images/網頁背景圖-漸層版 (1).png"
+              alt="三位藥師的藥鋪插畫"
+              fetchpriority="high"
+            >
+          </div>
+
+          <!-- 圖片：完整品牌吊牌原圖 -->
+          <div
+            class="box image-crop crop-sign"
+            style="--x:-187; --y:0; --w:1813; --h:524;"
+            aria-hidden="true"
+          >
+            <img
+              src="images/招牌.png"
+              alt=""
+            >
+          </div>
+
+          <!--
+            圖片：完整拉繩原圖。
+            點擊：選單從上方下滑（見頁面最下方 script）。
+            href 是備用：瀏覽器沒有執行 JS 時，會連到選單頁 html2.html。
+          -->
+          <a
+            id="rope-btn"
+            class="box image-crop crop-rope"
+            style="--x:1199; --y:0; --w:63; --h:447;"
+            href="html2.html"
+            aria-label="開啟導覽選單"
+            aria-expanded="false"
+            aria-controls="curtain-menu"
+          >
+            <img
+              src="images/繩子.png"
+              alt=""
+            >
+          </a>
+        </header>
+
+        <!-- =====================
+             活動優惠
+             ===================== -->
+        <section
+          class="box promotions"
+          style="--x:0; --y:1008; --w:1440; --h:379;"
+          aria-labelledby="promotions-title"
+        >
+          <h2
+            id="promotions-title"
+            class="box section-title"
+            style="--x:70; --y:0; --w:234; --h:69;"
+          >
+            活動優惠
+          </h2>
+
+          <!-- 左側活動橫幅 -->
+          <div
+            class="box image-fill"
+            style="--x:61; --y:66; --w:817; --h:313;"
+          >
+            <img
+              src="images/長banner.png"
+              alt="趣味商品等您探索，現在就前往現場"
+            >
+          </div>
+
+          <!-- 右側黃金瓦仔活動橫幅 -->
+          <div
+            class="box image-fill"
+            style="--x:899; --y:66; --w:481; --h:313;"
+          >
+            <img
+              src="images/1.png"
+              alt="黃金瓦仔活動優惠"
+            >
+          </div>
+        </section>
+
+        <!-- =====================
+             優惠商品
+             ===================== -->
+        <section
+          id="products"
+          class="box products"
+          style="--x:0; --y:1462; --w:1440; --h:459;"
+          aria-labelledby="products-title"
+        >
+          <h2
+            id="products-title"
+            class="box section-title"
+            style="--x:61; --y:0; --w:234; --h:69;"
+          >
+            優惠商品
+          </h2>
+
+          <!-- =====================
+               左側大卡片：縮小藥
+               ===================== -->
+          <article
+            class="box product"
+            style="--x:60; --y:69; --w:652; --h:390;"
+            aria-labelledby="shrink-title"
+          >
+            <div
+              class="box product-frame image-crop crop-frame-large"
+              style="--x:0; --y:0; --w:652; --h:390;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/大商品框.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-plate image-crop crop-plate-large"
+              style="--x:27; --y:29; --w:317; --h:317;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/大商品底圖.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-picture image-fill"
+              style="--x:37; --y:29; --w:317; --h:317;"
+            >
+              <img
+                src="images/縮小藥.png"
+                alt="縮小藥"
+              >
+            </div>
+
+            <h3
+              id="shrink-title"
+              class="box product-name product-name--large"
+              style="--x:362; --y:43; --w:170; --h:30;"
+            >
+              縮小藥
+            </h3>
+
+            <p
+              class="box product-price product-price--large"
+              style="--x:362; --y:93; --w:170; --h:30;"
+            >
+              $123,456
+            </p>
+
+            <p
+              class="box body-text product-description"
+              style="
+                --x:358; --y:143; --w:174; --h:55;
+                --font-size:12; --line-height:28;
+              "
+            >
+              一口吞下縮小藥，世界瞬間變超大，連路過的螞蟻都對我冷笑，真是有夠荒謬。
+            </p>
+
+            <!--
+              整張縮小藥卡片（含木框）都可點擊，前往頁面五。
+              透明連結蓋在卡片最上層，尺寸與木框相同。
+            -->
+            <a
+              class="box product-link"
+              style="--x:0; --y:0; --w:652; --h:390;"
+              href="html5.html"
+              aria-label="查看縮小藥商品詳情"
+            ></a>
+          </article>
+
+          <!-- =====================
+               中間上方：人生重來藥
+               ===================== -->
+          <article
+            class="box product"
+            style="--x:735; --y:69; --w:305; --h:185;"
+            aria-labelledby="restart-title"
+          >
+            <div
+              class="box product-frame image-crop crop-frame-a"
+              style="--x:0; --y:0; --w:305; --h:185;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品框2.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-plate image-crop crop-plate-small"
+              style="--x:14; --y:21; --w:140; --h:140;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品底圖.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-picture image-fill"
+              style="--x:14; --y:21; --w:140; --h:140;"
+            >
+              <img
+                src="images/人生重來藥.png"
+                alt="人生重來藥"
+              >
+            </div>
+
+            <h3
+              id="restart-title"
+              class="box product-name"
+              style="--x:146; --y:38; --w:115; --h:30;"
+            >
+              人生重來藥
+            </h3>
+
+            <p
+              class="box product-price"
+              style="--x:146; --y:74; --w:115; --h:30;"
+            >
+              $人生無價
+            </p>
+
+            <p
+              class="box body-text product-description"
+              style="
+                --x:146; --y:104; --w:115; --h:55;
+                --font-size:12; --line-height:16;
+              "
+            >
+              吃了人生重來藥，還是好想睡。
+            </p>
+          </article>
+
+          <!-- =====================
+               中間下方：黃金瓦仔
+               ===================== -->
+          <article
+            class="box product"
+            style="--x:735; --y:274; --w:305; --h:185;"
+            aria-labelledby="gold-title"
+          >
+            <div
+              class="box product-frame image-crop crop-frame-gold"
+              style="--x:-5; --y:0; --w:310; --h:185;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品框1.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-plate image-crop crop-plate-small"
+              style="--x:14; --y:23; --w:140; --h:140;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品底圖.png"
+                alt=""
+              >
+            </div>
+
+            <!-- 黃金瓦仔圖片有自訂裁切 -->
+            <div
+              class="box product-picture image-crop crop-gold"
+              style="--x:14; --y:17; --w:140; --h:140;"
+            >
+              <img
+                src="images/黃金瓦仔.png"
+                alt="黃金瓦仔"
+              >
+            </div>
+
+            <h3
+              id="gold-title"
+              class="box product-name"
+              style="--x:146; --y:44; --w:115; --h:30;"
+            >
+              黃金瓦仔
+            </h3>
+
+            <p
+              class="box product-price"
+              style="--x:146; --y:80; --w:115; --h:30;"
+            >
+              $88,887
+            </p>
+
+            <p
+              class="box body-text product-description"
+              style="
+                --x:146; --y:104; --w:133; --h:55;
+                --font-size:12; --line-height:28;
+              "
+            >
+              傳說中的黃金瓦仔。
+            </p>
+
+            <!--
+              整張黃金瓦仔卡片（含木框）都可點擊，前往頁面三。
+              透明連結蓋在卡片最上層，尺寸與木框相同。
+            -->
+            <a
+              class="box product-link"
+              style="--x:-5; --y:0; --w:310; --h:185;"
+              href="html3.html"
+              aria-label="查看黃金瓦仔商品詳情"
+            ></a>
+          </article>
+
+          <!-- =====================
+               右側上方：俐三的血
+               ===================== -->
+          <article
+            class="box product"
+            style="--x:1063; --y:69; --w:318; --h:185;"
+            aria-labelledby="blood-title"
+          >
+            <div
+              class="box product-plate product-plate--under image-crop crop-plate-small"
+              style="--x:6; --y:21; --w:137; --h:140;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品底圖.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-frame product-frame--over image-crop crop-frame-blood"
+              style="--x:-9; --y:0; --w:338; --h:185;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品框1.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-picture image-fill"
+              style="--x:16; --y:29; --w:109; --h:120;"
+            >
+              <img
+                src="images/俐彣的血.png"
+                alt="俐三的血"
+              >
+            </div>
+
+            <h3
+              id="blood-title"
+              class="box product-name"
+              style="--x:132; --y:41; --w:93; --h:30;"
+            >
+              俐三的血
+            </h3>
+
+            <p
+              class="box product-price"
+              style="--x:132; --y:78; --w:93; --h:30;"
+            >
+              $67,000
+            </p>
+
+            <p
+              class="box body-text product-description"
+              style="
+                --x:133; --y:108; --w:107; --h:55;
+                --font-size:12; --line-height:16;
+              "
+            >
+              喝了俐三的血，居然開始想寫稿。
+            </p>
+          </article>
+
+          <!-- =====================
+               右側下方：爆肝藥
+               ===================== -->
+          <article
+            class="box product"
+            style="--x:1063; --y:274; --w:318; --h:185;"
+            aria-labelledby="energy-title"
+          >
+            <div
+              class="box product-plate product-plate--under image-crop crop-plate-small"
+              style="--x:13; --y:23; --w:127; --h:140;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品底圖.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-frame product-frame--over image-crop crop-frame-a"
+              style="--x:0; --y:0; --w:318; --h:185;"
+              aria-hidden="true"
+            >
+              <img
+                src="images/小商品框2.png"
+                alt=""
+              >
+            </div>
+
+            <div
+              class="box product-picture image-fill"
+              style="--x:24; --y:29; --w:109; --h:120;"
+            >
+              <img
+                src="images/爆肝藥.PNG"
+                alt="爆肝藥"
+              >
+            </div>
+
+            <h3
+              id="energy-title"
+              class="box product-name"
+              style="--x:132; --y:44; --w:93; --h:30;"
+            >
+              爆肝藥
+            </h3>
+
+            <p
+              class="box product-price"
+              style="--x:132; --y:80; --w:93; --h:30;"
+            >
+              $49,900
+            </p>
+
+            <p
+              class="box body-text product-description"
+              style="
+                --x:133; --y:110; --w:107; --h:55;
+                --font-size:12; --line-height:16;
+              "
+            >
+              吃了爆肝藥，今晚通宵把稿交！
+            </p>
+          </article>
+        </section>
+      </main>
+
+      <!-- =====================
+           頁尾
+           ===================== -->
+      <footer
+        class="box footer"
+        style="--x:0; --y:2023; --w:1440; --h:457;"
+      >
+        <!-- 最新頁尾背景尺寸與位置 -->
+        <div
+          class="box footer-background image-crop crop-footer"
+          style="--x:-8; --y:0; --w:1440; --h:457;"
+          aria-hidden="true"
+        >
+          <img
+            src="images/footer.png"
+            alt=""
+          >
+        </div>
+
+        <!-- 客戶服務 -->
+        <section
+          class="box footer-column"
+          style="--x:251; --y:163; --w:170; --h:200;"
+          aria-labelledby="footer-service-title"
+        >
+          <h2
+            id="footer-service-title"
+            class="box footer-title"
+            style="--x:0; --y:0; --w:170; --h:30;"
+          >
+            客戶服務
+          </h2>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:34; --w:170; --h:30;"
+          >訂單/配送進度查詢</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:65; --w:170; --h:30;"
+          >取消訂單/退貨</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:94; --w:170; --h:30;"
+          >更改配送地址</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:122; --w:170; --h:30;"
+          >折價券說明</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:149; --w:170; --h:30;"
+          >FAQ常見問題</p>
+        </section>
+
+        <!-- 客戶權益 -->
+        <section
+          class="box footer-column"
+          style="--x:523; --y:159; --w:170; --h:140;"
+          aria-labelledby="footer-rights-title"
+        >
+          <h2
+            id="footer-rights-title"
+            class="box footer-title"
+            style="--x:0; --y:0; --w:170; --h:30;"
+          >
+            客戶權益
+          </h2>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:34; --w:170; --h:30;"
+          >客戶隱私政策</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:65; --w:170; --h:30;"
+          >客戶權利義務</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:94; --w:170; --h:30;"
+          >防詐騙宣導</p>
+        </section>
+
+        <!-- 藥師介紹 -->
+        <section
+          class="box footer-column"
+          style="--x:795; --y:161; --w:170; --h:140;"
+          aria-labelledby="footer-team-title"
+        >
+          <h2
+            id="footer-team-title"
+            class="box footer-title"
+            style="--x:0; --y:0; --w:170; --h:30;"
+          >
+            藥師介紹
+          </h2>
+
+          <p
+            class="box footer-copy"
+            style="--x:1; --y:34; --w:170; --h:30;"
+          >陳俐三 藥師</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:65; --w:170; --h:30;"
+          >陳婕佑 藥師</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:94; --w:170; --h:30;"
+          >陳受恩 藥師</p>
+        </section>
+
+        <!-- 聯絡我們 -->
+        <section
+          class="box footer-column"
+          style="--x:1055; --y:163; --w:170; --h:140;"
+          aria-labelledby="footer-contact-title"
+        >
+          <h2
+            id="footer-contact-title"
+            class="box footer-title"
+            style="--x:0; --y:0; --w:170; --h:30;"
+          >
+            聯絡我們
+          </h2>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:34; --w:170; --h:30;"
+          >地址</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:64; --w:170; --h:30;"
+          >電話</p>
+
+          <p
+            class="box footer-copy"
+            style="--x:0; --y:95; --w:170; --h:30;"
+          >官方社群</p>
+        </section>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- 選單開關：點繩子下滑，點選單空白處上滑 -->
+  <script>
+    const ropeBtn = document.getElementById('rope-btn');
+    const curtainMenu = document.getElementById('curtain-menu');
+
+    function openMenu() {
+      curtainMenu.classList.add('active');
+      curtainMenu.setAttribute('aria-hidden', 'false');
+      ropeBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      curtainMenu.classList.remove('active');
+      curtainMenu.setAttribute('aria-hidden', 'true');
+      ropeBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // 點繩子：選單從上方下滑，蓋在第一頁上
+    ropeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMenu();
+    });
+
+    // 點選單：空白處或「#」錨點連結 → 收起；其他連結正常跳頁
+    curtainMenu.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link || link.getAttribute('href').startsWith('#')) {
+        closeMenu();
+      }
+    });
+
+    // 按 Esc 也可收起
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  </script>
+</body>
+</html>

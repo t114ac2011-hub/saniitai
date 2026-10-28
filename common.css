@@ -1,0 +1,266 @@
+/* =========================
+   五頁共用：顏色與字型
+   ========================= */
+
+:root {
+  --page-background: #31404a;
+  --cream: #eae1cc;
+  --price-color: #75364e;
+  --footer-title-color: #892a3f;
+  --control-background: #455e6d;
+
+  /*
+   * 優先使用原設計字型。
+   * 未安裝時，會使用電腦上的替代中文字型。
+   *
+   * 若要加入網頁字型，請自行確認字型使用授權。
+   */
+  --heading-font:
+    "DFShiYi W7",
+    "Noto Serif TC",
+    "Songti TC",
+    "PMingLiU",
+    serif;
+
+  --product-font:
+    "DFShiYiW5-B5",
+    "Noto Serif TC",
+    "Songti TC",
+    "PMingLiU",
+    serif;
+
+  --body-font:
+    "Noto Sans",
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    "PingFang TC",
+    sans-serif;
+}
+
+/* =========================
+   基本重設
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--page-background);
+  color: #000;
+  font-family: var(--body-font);
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  margin: 0;
+}
+
+/* =========================
+   電腦滿版與等比例縮放
+   ========================= */
+
+/*
+ * 滿版是寬度填滿瀏覽器，
+ * 長頁面仍然向下捲動。
+ */
+.viewport {
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+  overflow: hidden;
+  background: var(--page-background);
+}
+
+/*
+ * 所有頁面以 1440px 為設計基準。
+ *
+ * 1440px 寬時，--u = 1px。
+ * 1920px 寬時，--u 約為 1.333px。
+ */
+.page {
+  --u: calc(100vw / 1440);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  background: var(--page-background);
+}
+
+/*
+ * 使用實際容器寬度，
+ * 避免將垂直捲軸寬度算入。
+ */
+@supports (width: 1cqw) {
+  .page {
+    --u: calc(100cqw / 1440);
+  }
+}
+
+/*
+ * HTML 裡的四個數字：
+ *
+ * --x：距離父層左側
+ * --y：距離父層上方
+ * --w：寬度
+ * --h：高度
+ *
+ * 數字皆為設計稿的基準值。
+ */
+.box {
+  position: absolute;
+  isolation: isolate;
+
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+
+  overflow: visible;
+}
+
+/* =========================
+   圖片：填滿
+   ========================= */
+
+/* 對應目前 Figma 的 Fill／填滿 */
+.image-fill {
+  overflow: hidden;
+}
+
+.image-fill > img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================
+   圖片：自訂裁切
+   ========================= */
+
+/*
+ * 以下公式適用於沒有旋轉或傾斜的裁切。
+ * 有旋轉的圖片會在對應頁面另外設定。
+ *
+ * --sx、--sy：顯示範圍占原圖的比例
+ * --tx、--ty：取用原圖的起始位置
+ */
+.image-crop {
+  overflow: hidden;
+}
+
+.image-crop > img {
+  position: absolute;
+  display: block;
+
+  width: calc(100% / var(--sx));
+  height: calc(100% / var(--sy));
+
+  left: calc(-100% * var(--tx) / var(--sx));
+  top: calc(-100% * var(--ty) / var(--sy));
+
+  max-width: none;
+  max-height: none;
+
+  object-fit: fill;
+}
+
+/* =========================
+   共用文字
+   ========================= */
+
+.section-title {
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: calc(48 * var(--u));
+  font-weight: 400;
+  line-height: calc(69 * var(--u));
+}
+
+.product-name,
+.product-price {
+  font-family: var(--product-font);
+  font-size: calc(20 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+}
+
+.product-price {
+  color: var(--price-color);
+}
+
+.body-text {
+  font-family: var(--body-font);
+  font-size: calc(var(--font-size, 16) * var(--u));
+  line-height: calc(var(--line-height, 28) * var(--u));
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  overflow: visible;
+}
+
+/* =========================
+   輔助與鍵盤操作
+   ========================= */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline:
+    max(1px, calc(2 * var(--u)))
+    solid var(--cream);
+
+  outline-offset: calc(4 * var(--u));
+}

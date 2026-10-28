@@ -1,0 +1,183 @@
+/* =========================
+   第二頁：整體尺寸
+   ========================= */
+
+/*
+ * 基準尺寸：1440 × 1203。
+ * 滿版縮放沿用 common.css 的 --u。
+ */
+.menu-page {
+  height: calc(1203 * var(--u));
+  background: var(--page-background);
+}
+
+/* =========================
+   布幕背景
+   ========================= */
+
+.menu-background {
+  z-index: 0;
+  pointer-events: none;
+}
+
+/*
+ * 對應目前 Figma 的 Fill／填滿設定。
+ *
+ * 原圖：1440 × 1000
+ * 顯示範圍：1440 × 1203
+ *
+ * 保持原圖比例放大，
+ * 超出顯示範圍的左右部分會被裁切。
+ */
+.menu-background > img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================
+   左深右淺黑色漸層
+   ========================= */
+
+.menu-shade {
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /*
+   * 漸層填色本身的不透明度為 70%。
+   * 最左側實際黑色不透明度：
+   * 80% × 70% = 56%。
+   */
+  opacity: 0.7;
+}
+
+/* =========================
+   導覽區域
+   ========================= */
+
+.menu-navigation {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* =========================
+   選單項目
+   ========================= */
+
+/*
+ * 各項目的位置與尺寸，
+ * 已在 HTML 的 --x、--y、--w、--h 中設定。
+ *
+ * 使用 flex 明確靠左、靠上，
+ * 避免按鈕與連結出現不同的垂直對齊。
+ */
+.menu-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  appearance: none;
+  background: transparent;
+
+  color: var(--cream);
+  text-align: left;
+  text-decoration: none;
+}
+
+/* 實際顯示的文字 */
+.menu-label {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  color: var(--cream);
+  font-family: var(--heading-font);
+  font-size: calc(60 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+
+  white-space: nowrap;
+}
+
+/* 已造訪的連結保持原色 */
+.menu-link:visited,
+.menu-link:visited .menu-label {
+  color: var(--cream);
+}
+
+/* 尚未串接的項目，保留目前外觀 */
+.menu-placeholder:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.menu-placeholder:disabled .menu-label {
+  color: var(--cream);
+  -webkit-text-fill-color: var(--cream);
+}
+
+/* 鍵盤焦點提示 */
+.menu-link:focus-visible {
+  outline:
+    max(1px, calc(2 * var(--u)))
+    solid var(--cream);
+
+  outline-offset: calc(6 * var(--u));
+}
+
+/* =========================
+   覆蓋式下滑選單（放在頁面一內）
+   ========================= */
+
+.menu-overlay {
+  position: absolute;     /* 蓋在頁面上，不推動下方內容 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(1203 * var(--u));
+  z-index: 100;
+  overflow: hidden;
+
+  /* 預設：整個選單收在畫面上方 */
+  transform: translateY(-100%);
+  visibility: hidden;
+
+  /* 收起：先上滑，滑完才隱藏（避免連結還能被 Tab 到） */
+  transition:
+    transform 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0s linear 1000ms;
+}
+
+/* 點繩子後加上 .active：從上方下滑到定位 */
+.menu-overlay.active {
+  transform: translateY(0);
+  visibility: visible;
+
+  transition:
+    transform 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0s;
+}
+
+/* 內層沿用 .menu-page 的高度與背景，補上定位與滿寬 */
+.menu-overlay .menu-page {
+  position: relative;
+  width: 100%;
+  cursor: pointer;   /* 點空白處可收起 */
+}
+
+/* 尚未串接的項目：點擊穿透，視為「空白處」，一樣會收起選單 */
+.menu-overlay .menu-placeholder:disabled {
+  pointer-events: none;
+}

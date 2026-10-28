@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>導覽選單｜三位一體♡藥理循環</title>
+
+  <meta
+    name="description"
+    content="三位一體♡藥理循環網站導覽選單。"
+  >
+
+  <!-- 沿用第一頁建立的共用樣式 -->
+  <link rel="stylesheet" href="common.css">
+
+  <!-- 第二頁最新樣式 -->
+  <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+  <div class="viewport">
+    <main class="page menu-page">
+
+      <h1 class="sr-only">網站導覽選單</h1>
+
+      <!-- =====================
+           布幕背景
+           ===================== -->
+
+      <!--
+        使用完整的 1440 × 1000 原圖。
+        顯示範圍為 1440 × 1203。
+        CSS 會保持原圖比例，放大後裁切左右。
+      -->
+      <div
+        class="box menu-background image-fill"
+        style="--x:0; --y:0; --w:1440; --h:1203;"
+        aria-hidden="true"
+      >
+        <img
+          src="images/窗簾.png"
+          alt=""
+          width="1440"
+          height="1000"
+          fetchpriority="high"
+        >
+      </div>
+
+      <!-- =====================
+           左深右淺黑色漸層
+           ===================== -->
+
+      <div
+        class="box menu-shade"
+        style="--x:0; --y:0; --w:1440; --h:1203;"
+        aria-hidden="true"
+      ></div>
+
+      <!-- =====================
+           最新位置的導覽選單
+           ===================== -->
+
+      <nav
+        class="menu-navigation"
+        aria-label="主要導覽"
+      >
+        <!-- 新品：X 126、Y 110 -->
+        <a
+          class="box menu-link"
+          style="--x:126; --y:110; --w:523; --h:115;"
+          href="html.html#products"
+        >
+          <span class="menu-label">新品</span>
+        </a>
+
+        <!-- 關於我們：X 126、Y 225 -->
+        <button
+          class="box menu-link menu-placeholder"
+          style="--x:126; --y:225; --w:523; --h:115;"
+          type="button"
+          title="關於我們頁面尚未建立"
+          disabled
+        >
+          <span class="menu-label">關於我們</span>
+        </button>
+
+        <!-- 所有商品：X 126、Y 340 -->
+        <a
+          class="box menu-link"
+          style="--x:126; --y:340; --w:523; --h:115;"
+          href="html.html#products"
+        >
+          <span class="menu-label">所有商品</span>
+        </a>
+
+        <!-- 購物車：X 126、Y 455 -->
+        <a
+          class="box menu-link"
+          style="--x:126; --y:455; --w:523; --h:115;"
+          href="html4.html"
+        >
+          <span class="menu-label">購物車</span>
+        </a>
+
+        <!-- 登入：X 126、Y 570 -->
+        <button
+          class="box menu-link menu-placeholder"
+          style="--x:126; --y:570; --w:523; --h:115;"
+          type="button"
+          title="登入功能尚未串接"
+          disabled
+        >
+          <span class="menu-label">登入</span>
+        </button>
+      </nav>
+
+    </main>
+  </div>
+</body>
+</html>
